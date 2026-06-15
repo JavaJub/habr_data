@@ -1,0 +1,34 @@
+<svg viewBox="0 0 1120 360" xmlns="http://www.w3.org/2000/svg" role="img" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Один вопрос «что такое индекс» — три глубины ответа</title>
+  <desc>Вопрос про индекс на трёх грейдах: Junior говорит «ускоряет поиск», Middle про типы и покрывающий индекс, Senior про планировщик и CONCURRENTLY.</desc>
+  <rect x="0" y="0" width="1120" height="360" fill="#0E1420"/>
+
+  <!-- question -->
+  <rect x="406" y="26" width="308" height="64" rx="14" fill="#13202F" stroke="#58A6FF" stroke-opacity="0.5" stroke-width="1.5"/>
+  <text x="560" y="66" fill="#58A6FF" font-size="22" text-anchor="middle">Что такое индекс?</text>
+
+  <!-- connectors -->
+  <path d="M560 90 C 360 128, 205 128, 205 178" fill="none" stroke="#56D364" stroke-width="2.5" opacity="0.8"/>
+  <path d="M560 90 L 560 178" fill="none" stroke="#E3B341" stroke-width="2.5" opacity="0.8"/>
+  <path d="M560 90 C 760 128, 915 128, 915 178" fill="none" stroke="#FB7185" stroke-width="2.5" opacity="0.8"/>
+
+  <!-- Junior -->
+  <rect x="40" y="180" width="330" height="150" rx="14" fill="#161D2B" stroke="#56D364" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="70" cy="222" r="8" fill="#56D364"/>
+  <text x="90" y="230" fill="#56D364" font-size="22" font-weight="600">Джун</text>
+  <text x="64" y="288" fill="#C5D0DE" font-size="18">ускоряет поиск по полю</text>
+
+  <!-- Middle -->
+  <rect x="395" y="180" width="330" height="150" rx="14" fill="#161D2B" stroke="#E3B341" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="425" cy="222" r="8" fill="#E3B341"/>
+  <text x="445" y="230" fill="#E3B341" font-size="22" font-weight="600">Мидл</text>
+  <text x="419" y="280" fill="#C5D0DE" font-size="18">B-tree, покрывающий,</text>
+  <text x="419" y="308" fill="#C5D0DE" font-size="18">нельзя вешать на всё</text>
+
+  <!-- Senior -->
+  <rect x="750" y="180" width="330" height="150" rx="14" fill="#161D2B" stroke="#FB7185" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="780" cy="222" r="8" fill="#FB7185"/>
+  <text x="800" y="230" fill="#FB7185" font-size="22" font-weight="600">Сеньор</text>
+  <text x="774" y="280" fill="#C5D0DE" font-size="18">почему planner игнорит,</text>
+  <text x="774" y="308" fill="#C5D0DE" font-size="18">CONCURRENTLY, без даунтайма</text>
+</svg>
