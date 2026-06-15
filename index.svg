@@ -1,0 +1,35 @@
+<svg viewBox="0 0 1100 520" xmlns="http://www.w3.org/2000/svg" role="img" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Почему планировщик игнорит индекс</title>
+  <desc>Индекс работает на простом равенстве, но при функции над колонкой, LIKE с ведущим процентом или низкой селективности планировщик сознательно выбирает seq scan.</desc>
+  <rect x="0" y="0" width="1100" height="520" fill="#0E1420"/>
+
+  <text x="60" y="58" fill="#E8EDF4" font-size="28" font-weight="600">Почему планировщик игнорит индекс — это уже Senior</text>
+
+  <!-- works -->
+  <rect x="60" y="96" width="480" height="300" rx="16" fill="#13201A" stroke="#56D364" stroke-opacity="0.4" stroke-width="1.5"/>
+  <circle cx="92" cy="134" r="7" fill="#56D364"/>
+  <text x="110" y="141" fill="#56D364" font-size="20" font-weight="600">индекс работает</text>
+  <rect x="88" y="166" width="424" height="50" rx="9" fill="#0E1420" stroke="#2A3446"/>
+  <text x="108" y="197" fill="#9FCBF5" font-size="17" font-family="ui-monospace, 'SF Mono', Menlo, monospace">WHERE email = ?</text>
+  <text x="100" y="262" fill="#C5D0DE" font-size="16">SARGable, высокая селективность</text>
+  <rect x="88" y="288" width="200" height="44" rx="9" fill="#56D364" fill-opacity="0.13" stroke="#56D364" stroke-opacity="0.4"/>
+  <text x="188" y="316" fill="#56D364" font-size="17" text-anchor="middle">Index Scan</text>
+  <text x="100" y="366" fill="#8FD8A0" font-size="15">быстро: читаем только нужные строки</text>
+
+  <!-- idle -->
+  <rect x="560" y="96" width="480" height="300" rx="16" fill="#1B1416" stroke="#FB7185" stroke-opacity="0.4" stroke-width="1.5"/>
+  <circle cx="592" cy="134" r="7" fill="#FB7185"/>
+  <text x="610" y="141" fill="#FB7185" font-size="20" font-weight="600">индекс простаивает</text>
+  <g font-family="ui-monospace, 'SF Mono', Menlo, monospace">
+    <text x="588" y="184" fill="#FBA3B2" font-size="16">WHERE lower(email) = ?</text>
+    <text x="588" y="214" fill="#FBA3B2" font-size="16">WHERE email LIKE '%a%'</text>
+    <text x="588" y="244" fill="#FBA3B2" font-size="16">низкая селективность</text>
+  </g>
+  <text x="588" y="284" fill="#C5D0DE" font-size="15">не-SARGable или вернёт пол-таблицы</text>
+  <rect x="588" y="300" width="200" height="44" rx="9" fill="#FB7185" fill-opacity="0.13" stroke="#FB7185" stroke-opacity="0.4"/>
+  <text x="688" y="328" fill="#FB7185" font-size="17" text-anchor="middle">Seq Scan</text>
+  <text x="588" y="372" fill="#FBA3B2" font-size="15">планировщик сам так решает — так дешевле</text>
+
+  <text x="60" y="446" fill="#9AA7B8" font-size="18">не-SARGable предикат или низкая селективность → seq scan</text>
+  <text x="60" y="478" fill="#EBCB7A" font-size="17">сеньор видит это в EXPLAIN (ANALYZE, BUFFERS), а не гадает</text>
+</svg>

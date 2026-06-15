@@ -1,0 +1,45 @@
+<svg viewBox="0 0 1120 540" xmlns="http://www.w3.org/2000/svg" role="img" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Сеньорская ловушка: сеть внутри @Transactional</title>
+  <desc>Синхронный HTTP-вызов внутри транзакции удерживает соединение из пула всё время таймаута, пул вычерпывается и сервис деградирует каскадом.</desc>
+  <rect x="0" y="0" width="1120" height="540" fill="#0E1420"/>
+
+  <text x="60" y="58" fill="#E8EDF4" font-size="28" font-weight="600">Сеньорская ловушка: сеть внутри @Transactional</text>
+
+  <!-- transaction container -->
+  <rect x="60" y="90" width="1000" height="150" rx="16" fill="#1B1416" stroke="#FB7185" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="84" y="120" fill="#FB7185" font-size="15" font-family="ui-monospace, 'SF Mono', Menlo, monospace">@Transactional</text>
+
+  <rect x="84" y="140" width="92" height="58" rx="8" fill="#1E2735" stroke="#2A3446"/>
+  <text x="130" y="174" fill="#C5D0DE" font-size="15" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace">BEGIN</text>
+
+  <rect x="192" y="140" width="150" height="58" rx="8" fill="#1E2735" stroke="#2A3446"/>
+  <text x="267" y="166" fill="#C5D0DE" font-size="14" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace">INSERT</text>
+  <text x="267" y="184" fill="#C5D0DE" font-size="14" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace">payment</text>
+
+  <rect x="358" y="140" width="490" height="58" rx="8" fill="#FB7185" fill-opacity="0.13" stroke="#FB7185" stroke-opacity="0.45"/>
+  <text x="603" y="166" fill="#FB7185" font-size="15" text-anchor="middle">HTTP → antifraud · ждём таймаут 2000 мс</text>
+  <text x="603" y="186" fill="#FBA3B2" font-size="13" text-anchor="middle">соединение из пула удержано всё это время</text>
+
+  <rect x="864" y="140" width="92" height="58" rx="8" fill="#1E2735" stroke="#2A3446"/>
+  <text x="910" y="174" fill="#5B6779" font-size="15" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace">COMMIT</text>
+
+  <!-- pool -->
+  <text x="60" y="296" fill="#9AA7B8" font-size="17">Connection pool — соединения заняты застрявшими транзакциями</text>
+  <g>
+    <rect x="60" y="312" width="84" height="36" rx="7" fill="#FB7185" fill-opacity="0.15" stroke="#FB7185" stroke-opacity="0.4"/>
+    <rect x="160" y="312" width="84" height="36" rx="7" fill="#FB7185" fill-opacity="0.15" stroke="#FB7185" stroke-opacity="0.4"/>
+    <rect x="260" y="312" width="84" height="36" rx="7" fill="#FB7185" fill-opacity="0.15" stroke="#FB7185" stroke-opacity="0.4"/>
+    <rect x="360" y="312" width="84" height="36" rx="7" fill="#FB7185" fill-opacity="0.15" stroke="#FB7185" stroke-opacity="0.4"/>
+    <rect x="460" y="312" width="84" height="36" rx="7" fill="#FB7185" fill-opacity="0.15" stroke="#FB7185" stroke-opacity="0.4"/>
+    <rect x="560" y="312" width="84" height="36" rx="7" fill="#FB7185" fill-opacity="0.15" stroke="#FB7185" stroke-opacity="0.4"/>
+    <rect x="660" y="312" width="84" height="36" rx="7" fill="#FB7185" fill-opacity="0.15" stroke="#FB7185" stroke-opacity="0.4"/>
+    <rect x="760" y="312" width="84" height="36" rx="7" fill="#FB7185" fill-opacity="0.15" stroke="#FB7185" stroke-opacity="0.4"/>
+    <rect x="860" y="312" width="84" height="36" rx="7" fill="#E3B341" fill-opacity="0.15" stroke="#E3B341" stroke-opacity="0.4"/>
+    <rect x="960" y="312" width="84" height="36" rx="7" fill="#E3B341" fill-opacity="0.15" stroke="#E3B341" stroke-opacity="0.4"/>
+  </g>
+  <text x="60" y="372" fill="#FB7185" font-size="13">8 занято</text>
+  <text x="862" y="372" fill="#E3B341" font-size="13">новые ждут</text>
+
+  <text x="60" y="432" fill="#FB7185" font-size="20">медленный вызов внутри транзакции → пул вычерпан → ложится весь сервис, а не один метод</text>
+  <text x="60" y="466" fill="#9AA7B8" font-size="17">лечится так: вызов выносят за границу транзакции, согласованность — через Outbox / Saga</text>
+</svg>

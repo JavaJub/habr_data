@@ -1,0 +1,38 @@
+<svg viewBox="0 0 1120 600" xmlns="http://www.w3.org/2000/svg" role="img" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Грейд — это глубина ответа, а не список тем</title>
+  <desc>Лесенка грейдов: Junior отвечает «что это», Middle «как работает и где ломается», Senior «что в проде и чем платим».</desc>
+  <rect x="0" y="0" width="1120" height="600" fill="#0E1420"/>
+
+  <text x="60" y="66" fill="#E8EDF4" font-size="30" font-weight="600">Грейд — не количество тем,</text>
+  <text x="60" y="106" fill="#E8EDF4" font-size="30" font-weight="600">а глубина по одной из них</text>
+
+  <polyline points="225,470 560,380 895,290" fill="none" stroke="#3A4658" stroke-width="2" stroke-dasharray="6 7"/>
+  <text x="1000" y="270" fill="#6E7B8F" font-size="15" text-anchor="end">глубина ↗</text>
+
+  <!-- Junior -->
+  <rect x="70" y="362" width="312" height="150" rx="14" fill="#161D2B" stroke="#56D364" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="100" cy="398" r="7" fill="#56D364"/>
+  <text x="118" y="405" fill="#56D364" font-size="22" font-weight="600">Junior</text>
+  <text x="96" y="438" fill="#9AA7B8" font-size="17">что это</text>
+  <text x="96" y="478" fill="#8FD8A0" font-size="15" font-family="ui-monospace, 'SF Mono', Menlo, monospace">«индекс ускоряет поиск»</text>
+
+  <!-- Middle -->
+  <rect x="404" y="272" width="312" height="150" rx="14" fill="#161D2B" stroke="#E3B341" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="434" cy="308" r="7" fill="#E3B341"/>
+  <text x="452" y="315" fill="#E3B341" font-size="22" font-weight="600">Middle</text>
+  <text x="430" y="348" fill="#9AA7B8" font-size="16">как работает · где ломается</text>
+  <text x="430" y="388" fill="#EBCB7A" font-size="15" font-family="ui-monospace, 'SF Mono', Menlo, monospace">«B-tree, покрывающий»</text>
+
+  <!-- Senior -->
+  <rect x="738" y="182" width="312" height="150" rx="14" fill="#161D2B" stroke="#FB7185" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="768" cy="218" r="7" fill="#FB7185"/>
+  <text x="786" y="225" fill="#FB7185" font-size="22" font-weight="600">Senior</text>
+  <text x="764" y="258" fill="#9AA7B8" font-size="16">что в проде · чем платим</text>
+  <text x="764" y="298" fill="#FBA3B2" font-size="15" font-family="ui-monospace, 'SF Mono', Menlo, monospace">«planner берёт seq scan»</text>
+
+  <!-- recalibration callout -->
+  <rect x="70" y="540" width="980" height="44" rx="10" fill="#161D2B" stroke="#2A3446" stroke-width="1.5"/>
+  <text x="560" y="568" font-size="16" text-anchor="middle">
+    <tspan fill="#9AA7B8">внутренности JDK → </tspan><tspan fill="#E3B341" font-weight="600">Middle</tspan><tspan fill="#9AA7B8">   ·   прод и трейд-оффы → </tspan><tspan fill="#FB7185" font-weight="600">Senior</tspan>
+  </text>
+</svg>

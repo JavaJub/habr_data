@@ -1,0 +1,55 @@
+<svg viewBox="0 0 1100 560" xmlns="http://www.w3.org/2000/svg" role="img" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>HashMap внутри — уровень Middle</title>
+  <desc>Массив бакетов: коллизии складываются в связный список, а при восьми и более элементах в одном бакете список превращается в красно-чёрное дерево.</desc>
+  <rect x="0" y="0" width="1100" height="560" fill="#0E1420"/>
+
+  <text x="60" y="56" fill="#E8EDF4" font-size="28" font-weight="600">HashMap внутри — это уровень Middle, не Senior</text>
+
+  <text x="60" y="106" fill="#9AA7B8" font-size="16">массив бакетов</text>
+  <!-- bucket array -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, monospace">
+    <rect x="60" y="120" width="118" height="56" rx="8" fill="#161D2B" stroke="#2A3446"/>
+    <text x="119" y="154" fill="#5B6779" font-size="16" text-anchor="middle">0</text>
+    <rect x="185" y="120" width="118" height="56" rx="8" fill="#161D2B" stroke="#2A3446"/>
+    <text x="244" y="154" fill="#5B6779" font-size="16" text-anchor="middle">1</text>
+    <rect x="310" y="120" width="118" height="56" rx="8" fill="#161D2B" stroke="#58A6FF" stroke-opacity="0.5"/>
+    <text x="369" y="154" fill="#58A6FF" font-size="16" text-anchor="middle">2 ●</text>
+    <rect x="435" y="120" width="118" height="56" rx="8" fill="#161D2B" stroke="#2A3446"/>
+    <text x="494" y="154" fill="#5B6779" font-size="16" text-anchor="middle">3</text>
+    <rect x="560" y="120" width="118" height="56" rx="8" fill="#161D2B" stroke="#FB7185" stroke-opacity="0.5"/>
+    <text x="619" y="154" fill="#FB7185" font-size="16" text-anchor="middle">4 ●</text>
+    <rect x="685" y="120" width="118" height="56" rx="8" fill="#161D2B" stroke="#2A3446"/>
+    <text x="744" y="154" fill="#5B6779" font-size="16" text-anchor="middle">5</text>
+  </g>
+
+  <!-- chain from bucket 2 -->
+  <path d="M369 176 L369 210" stroke="#58A6FF" stroke-width="2"/>
+  <g font-family="ui-monospace, 'SF Mono', Menlo, monospace">
+    <rect x="300" y="212" width="150" height="40" rx="8" fill="#13202F" stroke="#58A6FF" stroke-opacity="0.4"/>
+    <text x="375" y="238" fill="#9FCBF5" font-size="15" text-anchor="middle">node</text>
+    <path d="M375 252 L375 268" stroke="#58A6FF" stroke-width="2"/>
+    <rect x="300" y="270" width="150" height="40" rx="8" fill="#13202F" stroke="#58A6FF" stroke-opacity="0.4"/>
+    <text x="375" y="296" fill="#9FCBF5" font-size="15" text-anchor="middle">node</text>
+    <path d="M375 310 L375 326" stroke="#58A6FF" stroke-width="2"/>
+    <rect x="300" y="328" width="150" height="40" rx="8" fill="#13202F" stroke="#58A6FF" stroke-opacity="0.4"/>
+    <text x="375" y="354" fill="#9FCBF5" font-size="15" text-anchor="middle">node</text>
+  </g>
+  <text x="280" y="402" fill="#58A6FF" font-size="15" text-anchor="middle">коллизии → список · O(n)</text>
+
+  <!-- tree from bucket 4 -->
+  <path d="M619 176 C 700 230, 740 230, 800 250" fill="none" stroke="#FB7185" stroke-width="2"/>
+  <text x="700" y="216" fill="#E3B341" font-size="15">≥ 8 элементов</text>
+  <g>
+    <circle cx="860" cy="252" r="24" fill="#1B1416" stroke="#FB7185" stroke-opacity="0.6"/>
+    <line x1="845" y1="270" x2="812" y2="312" stroke="#FB7185" stroke-width="2" opacity="0.7"/>
+    <line x1="875" y1="270" x2="912" y2="312" stroke="#FB7185" stroke-width="2" opacity="0.7"/>
+    <circle cx="806" cy="330" r="20" fill="#1B1416" stroke="#FB7185" stroke-opacity="0.5"/>
+    <circle cx="918" cy="330" r="20" fill="#1B1416" stroke="#FB7185" stroke-opacity="0.5"/>
+    <line x1="930" y1="346" x2="958" y2="384" stroke="#FB7185" stroke-width="2" opacity="0.6"/>
+    <circle cx="966" cy="398" r="17" fill="#1B1416" stroke="#FB7185" stroke-opacity="0.45"/>
+  </g>
+  <text x="860" y="448" fill="#FB7185" font-size="15" text-anchor="middle">красно-чёрное дерево · O(log n)</text>
+
+  <text x="60" y="498" fill="#9AA7B8" font-size="17">при 8+ элементах в бакете (и массиве ≥ 64) список превращается в дерево</text>
+  <text x="60" y="530" fill="#FBA3B2" font-size="16">Senior здесь — не «знаю про treeify», а выбор структуры под нагрузку и память</text>
+</svg>

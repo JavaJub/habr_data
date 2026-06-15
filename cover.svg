@@ -1,0 +1,46 @@
+<svg viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg" role="img" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Один вопрос — три ответа</title>
+  <desc>Один и тот же вопрос на java-собесе: Junior отвечает за 10 секунд, Senior за 3 минуты, и по глубине ответа интервьюер считывает грейд.</desc>
+  <rect x="0" y="0" width="1200" height="680" fill="#0E1420"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#58A6FF" opacity="0.5"/>
+
+  <text x="64" y="92" fill="#E8EDF4" font-size="46" font-weight="600">Один вопрос — три ответа</text>
+  <text x="64" y="132" fill="#9AA7B8" font-size="22">Глубина ответа выдаёт грейд раньше, чем разговор о зарплате</text>
+
+  <!-- question card -->
+  <rect x="64" y="252" width="384" height="150" rx="16" fill="#161D2B" stroke="#2A3446" stroke-width="1.5"/>
+  <text x="90" y="292" fill="#6E7B8F" font-size="15" font-family="ui-monospace, 'SF Mono', Menlo, monospace">вопрос интервьюера</text>
+  <text x="90" y="334" fill="#58A6FF" font-size="27" font-family="ui-monospace, 'SF Mono', Menlo, monospace">@Transactional</text>
+  <text x="90" y="372" fill="#E8EDF4" font-size="21">«что здесь может пойти не так?»</text>
+
+  <!-- connectors -->
+  <path d="M448 320 C 540 320, 540 212, 612 212" fill="none" stroke="#56D364" stroke-width="2.5" opacity="0.85"/>
+  <path d="M448 327 C 540 327, 540 356, 612 356" fill="none" stroke="#E3B341" stroke-width="2.5" opacity="0.85"/>
+  <path d="M448 334 C 540 334, 540 500, 612 500" fill="none" stroke="#FB7185" stroke-width="2.5" opacity="0.85"/>
+
+  <!-- Junior -->
+  <rect x="612" y="152" width="524" height="120" rx="14" fill="#161D2B" stroke="#56D364" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="646" cy="194" r="8" fill="#56D364"/>
+  <text x="666" y="201" fill="#56D364" font-size="23" font-weight="600">Junior</text>
+  <rect x="992" y="178" width="120" height="32" rx="16" fill="#56D364" fill-opacity="0.12" stroke="#56D364" stroke-opacity="0.4"/>
+  <text x="1052" y="199" fill="#56D364" font-size="16" text-anchor="middle">10 секунд</text>
+  <text x="646" y="242" fill="#C5D0DE" font-size="19">«открыл транзакцию, при ошибке — откат»</text>
+
+  <!-- Middle -->
+  <rect x="612" y="296" width="524" height="120" rx="14" fill="#161D2B" stroke="#E3B341" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="646" cy="338" r="8" fill="#E3B341"/>
+  <text x="666" y="345" fill="#E3B341" font-size="23" font-weight="600">Middle</text>
+  <rect x="992" y="322" width="120" height="32" rx="16" fill="#E3B341" fill-opacity="0.12" stroke="#E3B341" stroke-opacity="0.4"/>
+  <text x="1052" y="343" fill="#E3B341" font-size="16" text-anchor="middle">≈ минута</text>
+  <text x="646" y="386" fill="#C5D0DE" font-size="19">«прокси, self-invocation, rollbackFor»</text>
+
+  <!-- Senior -->
+  <rect x="612" y="440" width="524" height="120" rx="14" fill="#161D2B" stroke="#FB7185" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="646" cy="482" r="8" fill="#FB7185"/>
+  <text x="666" y="489" fill="#FB7185" font-size="23" font-weight="600">Senior</text>
+  <rect x="992" y="466" width="120" height="32" rx="16" fill="#FB7185" fill-opacity="0.12" stroke="#FB7185" stroke-opacity="0.4"/>
+  <text x="1052" y="487" fill="#FB7185" font-size="16" text-anchor="middle">3 минуты</text>
+  <text x="646" y="530" fill="#C5D0DE" font-size="19">«держит соединение → пул вычерпан → каскад»</text>
+
+  <text x="1136" y="652" fill="#5B6779" font-size="18" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, monospace">@Java_Jub</text>
+</svg>

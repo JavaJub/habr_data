@@ -1,0 +1,41 @@
+<svg viewBox="0 0 1100 520" xmlns="http://www.w3.org/2000/svg" role="img" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>counter++ — три операции, а не одна</title>
+  <desc>Два потока читают одно и то же значение 41, оба увеличивают до 42 и оба записывают 42 — один инкремент теряется.</desc>
+  <rect x="0" y="0" width="1100" height="520" fill="#0E1420"/>
+
+  <text x="60" y="58" fill="#E8EDF4" font-size="28" font-weight="600">counter++ — это три операции, а не одна</text>
+  <text x="60" y="92" fill="#9AA7B8" font-size="17">read → modify → write, и между ними влезает другой поток</text>
+
+  <!-- Thread A -->
+  <circle cx="74" cy="158" r="7" fill="#56D364"/>
+  <text x="92" y="165" fill="#56D364" font-size="19" font-weight="600">Поток A</text>
+  <g font-family="ui-monospace, 'SF Mono', Menlo, monospace">
+    <rect x="92" y="180" width="200" height="48" rx="9" fill="#161D2B" stroke="#56D364" stroke-opacity="0.3"/>
+    <text x="192" y="210" fill="#C5D0DE" font-size="16" text-anchor="middle">read → 41</text>
+    <rect x="330" y="180" width="200" height="48" rx="9" fill="#161D2B" stroke="#56D364" stroke-opacity="0.3"/>
+    <text x="430" y="210" fill="#C5D0DE" font-size="16" text-anchor="middle">41 + 1 = 42</text>
+    <rect x="568" y="180" width="200" height="48" rx="9" fill="#161D2B" stroke="#56D364" stroke-opacity="0.3"/>
+    <text x="668" y="210" fill="#C5D0DE" font-size="16" text-anchor="middle">write 42</text>
+  </g>
+
+  <!-- Thread B -->
+  <circle cx="74" cy="300" r="7" fill="#58A6FF"/>
+  <text x="92" y="307" fill="#58A6FF" font-size="19" font-weight="600">Поток B</text>
+  <g font-family="ui-monospace, 'SF Mono', Menlo, monospace">
+    <rect x="192" y="322" width="200" height="48" rx="9" fill="#161D2B" stroke="#58A6FF" stroke-opacity="0.3"/>
+    <text x="292" y="352" fill="#C5D0DE" font-size="16" text-anchor="middle">read → 41</text>
+    <rect x="430" y="322" width="200" height="48" rx="9" fill="#161D2B" stroke="#58A6FF" stroke-opacity="0.3"/>
+    <text x="530" y="352" fill="#C5D0DE" font-size="16" text-anchor="middle">41 + 1 = 42</text>
+    <rect x="668" y="322" width="200" height="48" rx="9" fill="#161D2B" stroke="#58A6FF" stroke-opacity="0.3"/>
+    <text x="768" y="352" fill="#C5D0DE" font-size="16" text-anchor="middle">write 42</text>
+  </g>
+
+  <!-- result -->
+  <rect x="900" y="200" width="160" height="150" rx="14" fill="#1B1416" stroke="#FB7185" stroke-opacity="0.45"/>
+  <text x="980" y="244" fill="#FB7185" font-size="17" text-anchor="middle">count = 42</text>
+  <text x="980" y="284" fill="#9AA7B8" font-size="15" text-anchor="middle">ожидали 43</text>
+  <text x="980" y="318" fill="#FBA3B2" font-size="15" text-anchor="middle">−1 инкремент</text>
+
+  <text x="60" y="436" fill="#9AA7B8" font-size="18">read-modify-write не атомарна → потерянное обновление</text>
+  <text x="60" y="470" fill="#EBCB7A" font-size="17">чинит synchronized или AtomicInteger на CAS — и это уже уровень Middle</text>
+</svg>
